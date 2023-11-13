@@ -1,0 +1,54 @@
+<div class="row mb-5">
+  <div class="col-8">
+    <p class="h2 mb-3">Photos</p>
+    <p class="h5 mb-3">Album: <a routerLink="/albums">{{ album.titulo }}</a></p>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" autocomplete="off">
+      <div class="form-group">
+        <label>Conteúdo</label>
+        <angular-editor id="conteudo" name="conteudo" [(ngModel)]="photo.conteudo" required></angular-editor>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!f.valid || loading">Salvar</button>
+    </form>
+  </div>
+</div>
+
+<!-- Photos -->
+<div class="row">
+  <div class="col-12">
+    <div class="table-responsive">
+      <table class="table table-sm table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>descricao</th>
+            <th>url</th>
+            <th>Data Criação</th>
+            <th>Usuário</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-template ngFor let-photo [ngForOf]="photos">
+            <tr>
+              <td>{{ photo.id }}</td>
+              <td>{{ photo.conteudo }}</td>
+              <td>{{ photo.dtCriacao | date: 'dd/MM/yyyy HH:mm' }}</td>
+              <td>{{ photo.albumId }}</td>
+              <td>{{ photo.userName }}</td>
+              <td><img [src]="photo.url" /></td>
+              <td>
+                <div class="btn-group-sm">
+                  <button type="button" (click)="deletePhoto(photo.id)" class="btn btn-danger m-1">Excluir</button>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+          <tr *ngIf="!photos || photos.length < 1">
+            <td class="tr-text-center" colspan="6">
+              <h5>Nenhum dado a ser exibido.</h5>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="row mb-5">
+  <div class="col-8">
+    <p class="h2 mb-3">Albums</p>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" autocomplete="off">
+      <div class="form-group">
+        <label>Título</label>
+        <input type="text" id="titulo" name="titulo" class="form-control" [(ngModel)]="album.titulo" required />
+      </div>
+      <div class="form-group">
+        <label>Conteúdo</label>
+        <angular-editor id="conteudo" name="conteudo" [(ngModel)]="album.conteudo" required></angular-editor>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!f.valid || loading">Salvar</button>
+    </form>
+  </div>
+</div>
+
+<!-- Albums -->
+<div class="row">
+  <div class="col-12">
+    <div class="table-responsive">
+      <table class="table table-sm table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Conteúdo</th>
+            <th>Data Criação</th>
+            <th>Usuário</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-template ngFor let-album [ngForOf]="albums">
+            <tr>
+              <td>{{ album.id }}</td>
+              <td>{{ album.titulo }}</td>
+              <td>{{ album.conteudo }}</td>
+              <td>{{ album.dtCriacao | date: 'dd/MM/yyyy HH:mm' }}</td>
+              <td>{{ album.userName }}</td>
+              <td>
+                <div class="btn-group-sm">
+                  <button type="button" (click)="getSingleAlbum(album)" class="btn btn-primary m-1"
+                    [disabled]="album.btnDesabilitado">Buscar</button>
+
+                  <button type="button" (click)="deletePost(album.id)" class="btn btn-danger m-1">Excluir</button>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+          <tr *ngIf="!albums || albums.length < 1">
+            <td class="tr-text-center" colspan="6">
+              <h5>Nenhum dado a ser exibido.</h5>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

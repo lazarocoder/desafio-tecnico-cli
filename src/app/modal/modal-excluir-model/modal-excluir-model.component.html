@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>{{title}}</h1>
+<mat-dialog-content>
+    <div class="row">
+      <div class="col-12">
+        <div class="input-group input-group-sm">
+          <label>{{ message }}</label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-danger"
+        [mat-dialog-close]="false">Cancelar</button>
+
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="confirm()" [disabled]="loading">Confirmar</button>
+    </div>
+
+</mat-dialog-content>
