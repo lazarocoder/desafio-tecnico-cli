@@ -1,7 +1,7 @@
 
 # Desafio Técnico CLI
 
-Bem-vindo ao Desafio Técnico CLI! Este é um projeto Angular que apresenta [Um blog para postagens de álbum e fotos com usuários].
+Bem-vindo ao Desafio Técnico CLI! Este é um projeto Angular que apresenta [Um blog para postagens de álbum e fotos com usuários cadastrados e autenticados].
 
 ## Configuração do Projeto
 
@@ -29,4 +29,12 @@ Execute o seguinte comando para iniciar o servidor de desenvolvimento e abrir o 
 
 ```bash
 ng serve --open
+
+Cria uma pasta dist/ com arquivos otimizado para rodar em produção
+
+ng build --prod 
+
+
+
+
  
