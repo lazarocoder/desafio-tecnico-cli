@@ -5,6 +5,13 @@ Bem-vindo ao Desafio Técnico CLI! Este é um projeto Angular que apresenta [Um 
 
 ## Configuração do Projeto
 
+## Pré-requisitos
+
+Certifique-se de ter o Node.js e o npm instalados antes de prosseguir.
+
+- [Node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/)
+
 1. Clone este repositório:
 
     ```bash
